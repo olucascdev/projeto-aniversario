@@ -1,0 +1,1 @@
+SELECT * FROM `if0_36210763_lp2`.alunos;
