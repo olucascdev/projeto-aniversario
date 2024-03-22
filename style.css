@@ -91,7 +91,10 @@ body{
     cursor: pointer;
 }
 
-.box_form button:hover{background-color: rgb(12, 154, 231);}
+.box_form button:hover{
+    background-color: rgb(12, 154, 231);
+    
+}
 
 label{
     color: white;

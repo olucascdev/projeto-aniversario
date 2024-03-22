@@ -1,8 +1,8 @@
 <?php 
     include_once("config.php");
 
-    $nome = $_POST["nome"];
-    $dia = $_POST["dia"];
+    $nome = isset($_POST["nome"]) ? $_POST["nome"] : "";
+    $dia = isset($_POST["dia"]) ? $_POST["dia"] : "";
     if(isset($_FILES["foto"]))
     {
         $foto = $_FILES["foto"];
@@ -15,7 +15,7 @@
 
         $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
 
-        if($extensao != "jpg" && $extensao != "png")
+        if($extensao != "jpg" && $extensao != "png" && $extensao != "jpeg" )
             die("Tipo de arquivo não aceito");
         $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
         $deucerto = move_uploaded_file($foto["tmp_name"], $path);
@@ -23,6 +23,7 @@
         
         $result = mysqli_query($conexao, "INSERT INTO alunos(nome,data,foto) VALUES('$nome', '$dia', '$path')");
         
+  
             
     }
 ?>
@@ -59,7 +60,7 @@
                         <input type="file" name="foto" id="ifoto" required>
                     
                     
-                        <button type="submit" value="Enviar" id="enviar">
+                        <button type="submit" value="Enviar" id="enviar" name="enviar">
                         Enviar
                         </button>
                     
